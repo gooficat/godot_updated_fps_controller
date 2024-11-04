@@ -10,7 +10,6 @@ var jump = 5
 
 var cam_accel = 40
 var mouse_sense = 0.1
-var snap
 
 var angular_velocity = 30
 
@@ -64,16 +63,13 @@ func _physics_process(delta):
 	
 	#jumping and gravity
 	if is_on_floor():
-		snap = -get_floor_normal()
 		accel = ACCEL_DEFAULT
 		gravity_vec = Vector3.ZERO
 	else:
-		snap = Vector3.DOWN
 		accel = ACCEL_AIR
 		gravity_vec += Vector3.DOWN * gravity * delta
 		
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		snap = Vector3.ZERO
 		gravity_vec = Vector3.UP * jump
 	velocity.y = 0
 	
